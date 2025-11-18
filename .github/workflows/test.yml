@@ -18,4 +18,4 @@ jobs:
       - name: Run script
         run: |
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
-          python main.py
+      
