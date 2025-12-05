@@ -1,6 +1,6 @@
-//function to calculateAreaOfRectangle
-function calculateAreaOfRectangle(length, width){
-  const areaOfRectangle = length * width
-  console.log(areaOfRectangle) 
+const number =77
+if(number%2 === 0){
+  console.log(number +" is an even number")
+}else{
+  console.log(number +" is an odd number")
 }
-calculateAreaOfRectangle(10,5)

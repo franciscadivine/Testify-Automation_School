@@ -1,0 +1,19 @@
+{
+  "name": "testify-automation_school",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscadivine/Testify-Automation_School.git"
+  },
+  "author": "Francisca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franciscadivine/Testify-Automation_School/issues"
+  },
+  "homepage": "https://github.com/franciscadivine/Testify-Automation_School#readme"
+}

@@ -1,6 +1,10 @@
-//function to calculateAreaOfRectangle2
-function calculateAreaOfRectangle(length, width){
-  const areaOfRectangle = length * width
-  return areaOfRectangle; 
+const side1 = 10
+const side2 = 12
+const side3 = 1
+if(side1 === side2 && side2 === side3){
+  console.log("Equitorial triangle")
 }
-calculateAreaOfRectangle(2,5)
+else if(side1 === side2 || side1 === side3 || side2 === side3 ){
+  console.log("Isosceles triangle")
+}
+else console.log("Scalene triangle")
