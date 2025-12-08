@@ -13,6 +13,6 @@ toggleReadingStatus: function(){
   }
 
 }
-myPersonalLibrary.toggleReadingStatus()
+books.toggleReadingStatus()
 console.log(books)
 console.log(books.authour)
