@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "3bc8247f-5ab1-414b-ae55-d5dc49bb9057",
+		"name": "Tasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Api Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bab094b3-882d-4d02-8c4a-ea0f40a36a43",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"postman.setNextRequest(\"create order\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7779aa03-54b8-42cc-bde8-7e3f1fd6af4c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "6be97916-1036-45cb-b67c-b754e909c3c1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/status"
+			},
+			"response": []
+		},
+		{
+			"name": "Api Token",
+			"id": "c68ef8f8-5478-4481-a6db-b3a112a6336f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"clientName\": \"{{$randomFirstName}}\",\r\n    \"clientEmail\": \"{{$randomEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://simple-books-api.click/api-clients/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1f86d14-fbec-48ab-b6a8-cd27b851e068",
+						"exec": [
+							"pm.test(\"status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"//Test to check that a non-fiction book with id 5 has a name \"Untamed\"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"to confirm the id is equal to the expect number\", function () {",
+							"    pm.expect(jsonData[5].id).to.equal(5)",
+							"})",
+							"pm.test(\"The book with id 5 has the name 'Untamed'\",function(){",
+							"    pm.expect(jsonData[5].name).to.equal(\"Untamed\")",
+							"})",
+							"pm.test(\"The book with id 5 is a non-fiction book\", function () {",
+							"    pm.expect(jsonData[5].type).to.equal(\"non-fiction\")",
+							"})",
+							"console.log(jsonData[0].id)",
+							"pm.environment.set(\"book_id\", jsonData[0].id)",
+							"pm.globals.set(\"book_id\", jsonData[0].id)",
+							"//pm.collectionVariables.set(\"book_id\", jsonData[0].id)",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "80381d62-d372-450e-9b91-f299e6434097",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "634d1333-8987-4404-8cd0-eefe225b72fb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/books"
+			},
+			"response": []
+		},
+		{
+			"name": "create order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b9da937-3060-451c-8804-19b407cdc4d0",
+						"exec": [
+							"pm.test(\"Status code is 201\",function(){\r",
+							"    pm.response.to.have.status(201)\r",
+							"})\r",
+							"var orderId = pm.response.json().orderId\r",
+							"console.log(orderId)\r",
+							"pm.environment.set(\"orderId\", orderId);\r",
+							"//pm.globals.set(\"orderId\", orderId)\r",
+							"//pm.collectionVariables.set(\"orderId\", orderId);\r",
+							"//postman.setNextRequest(null);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "57ba26b6-4015-4e7d-919d-edf060289200",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "8b551e7f-5fcb-4ef8-8853-df4b7603a8a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\":{{book_id}},\r\n  \"customerName\": \"paul\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "69c6ad17-fd74-49ef-bbfc-17c3929cb81b",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "a8350fda-6dcb-4c1f-973b-389751c5c98c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/orders/{{orderId}}"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "117160fa56b290d06d2cf7eb4a72a9fb357226dee8856b9afa8c1705844c1436"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9583b2ad-1bac-4da0-a371-2d06e99c3b2a",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ce24bad8-91f3-4f21-ac1e-750e12665baa",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "orderId",
+			"value": "3cvSEsS_n0RaD04zIXkwN"
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://simple-books-api.click"
+		}
+	]
+}
