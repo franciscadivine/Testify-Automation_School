@@ -16,6 +16,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
+							"//To order task in a runner\r",
 							"postman.setNextRequest(\"create order\");\r",
 							""
 						],
