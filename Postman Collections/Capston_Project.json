@@ -6055,7 +6055,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"city\": \"Niger\",\n  \"country\": \"Congo\",\n  \"email\": \"bigi@gmail.com\",\n  \"firstName\": \"love\",\n  \"gender\": \"female\",\n  \"lastName\": \"lko\",\n  \"password\": \"1234\",\n  \"phone\": 8001289531,\n  \"state\": \"yel\",\n  \"commission\": 9952.086808255037,\n  \"company\": {\n    \"address\": {\n      \"addressId\": 3794,\n      \"buildingInfo\": \"runner street\",\n      \"city\": \"makol\",\n      \"country\": \"Congo\",\n      \"landmark\": \"kae\",\n      \"name\": \"mako\",\n      \"phone\": 8901909248,\n      \"pincode\": \"123\",\n      \"state\": \"imo\",\n      \"streetInfo\": \"12, lagos street\",\n      \"type\": \"yello\"\n    },\n    \"companyId\": 9453,\n    \"email\": \"fri@gmail.com\",\n    \"gstn\": \"fth\",\n    \"name\": \"gestern\",\n    \"phone\": \"8928345678\",\n    \"registerNumber\": \"1234\",\n    \"webAddress\": \"webAddress\"\n  },\n  \"createdDateTime\": \"1980-10-20T14:14:39.129Z\",\n  \"dob\": \"2002-05-05\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"jwtToken\",\n  \"productAdded\": 3,\n  \"productLimit\": 2,\n  \"role\": \"MERCHANT\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"EDO330355\"\n}",
+							"raw": "{\n  \"city\": \"Niger\",\n  \"country\": \"Congo\",\n  \"email\": \"{{$randomEmail}}\",\n  \"firstName\": \"love\",\n  \"gender\": \"female\",\n  \"lastName\": \"lko\",\n  \"password\": \"1234\",\n  \"phone\": 8001289531,\n  \"state\": \"yel\",\n  \"commission\": 9952.086808255037,\n  \"company\": {\n    \"address\": {\n      \"addressId\": 3794,\n      \"buildingInfo\": \"runner street\",\n      \"city\": \"makol\",\n      \"country\": \"Congo\",\n      \"landmark\": \"kae\",\n      \"name\": \"mako\",\n      \"phone\": 8901909248,\n      \"pincode\": \"123\",\n      \"state\": \"imo\",\n      \"streetInfo\": \"12, lagos street\",\n      \"type\": \"yello\"\n    },\n    \"companyId\": 9453,\n    \"email\": \"fri@gmail.com\",\n    \"gstn\": \"fth\",\n    \"name\": \"gestern\",\n    \"phone\": \"8928345678\",\n    \"registerNumber\": \"1234\",\n    \"webAddress\": \"webAddress\"\n  },\n  \"createdDateTime\": \"1980-10-20T14:14:39.129Z\",\n  \"dob\": \"2002-05-05\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"jwtToken\",\n  \"productAdded\": 3,\n  \"productLimit\": 2,\n  \"role\": \"MERCHANT\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"EDO330355\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -17915,14 +17915,14 @@
 	"auth": {
 		"type": "bearer",
 		"bearer": {
-			"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWN0b3JAZ21haWwuY29tIEFETUlOIiwiZXhwIjoxNzY2MTA3MzE5LCJpYXQiOjE3NjYwNzEzMTl9.a25CUeibDnjW_jsCbk1l-hFpA4uRiJhI8Xs3yoykJbM"
+			"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWN0b3JAZ21haWwuY29tIEFETUlOIiwiZXhwIjoxNzY2MTkxMDQyLCJpYXQiOjE3NjYxNTUwNDJ9.EWz2zjqkgKOnx7-3xfXSy9E12UgTl3jxPUQX0Z3OKh"
 		}
 	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1a98f230-3888-4ddc-ac3b-986294d7e6f1",
+				"id": "2413e361-0032-4eda-8875-7bbeb8bd1e74",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -17934,7 +17934,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "0df5245a-5cf6-405d-bc86-aac3da2ebf3f",
+				"id": "1735af5e-dacb-4939-ae2c-b4bedcd4b36d",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
