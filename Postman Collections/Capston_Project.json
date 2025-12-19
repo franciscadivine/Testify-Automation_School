@@ -687,7 +687,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"city\": \"Edo\",\n  \"country\": \"Nigeria\",\n  \"email\": \"hc13@gmail.com\",\n  \"firstName\": \"hectorboy1\",\n  \"gender\": \"male\",\n  \"lastName\": \"rectorboy\",\n  \"password\": \"1234\",\n  \"phone\":8948995000,\n  \"state\": \"wien\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"ADMIN\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"ALPHA\"\n}",
+							"raw": "{\n  \"city\": \"Edo\",\n  \"country\": \"Nigeria\",\n  \"email\": \"{{$randomEmail}}\",\n  \"firstName\": \"hectorboy1\",\n  \"gender\": \"male\",\n  \"lastName\": \"rectorboy\",\n  \"password\": \"1234\",\n  \"phone\":8948995000,\n  \"state\": \"wien\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"ADMIN\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"ALPHA\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
