@@ -2528,6 +2528,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2663,6 +2669,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -2695,9 +2707,9 @@
 									],
 									"query": [
 										{
-											"description": "amount",
 											"key": "amount",
-											"value": "8166.259592406317"
+											"value": "8166.259592406317",
+											"description": "amount"
 										}
 									]
 								},
@@ -3010,6 +3022,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -3872,6 +3890,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -3889,29 +3913,29 @@
 							],
 							"query": [
 								{
-									"description": "bankName",
 									"key": "bankName",
-									"value": "string"
+									"value": "string",
+									"description": "bankName"
 								},
 								{
-									"description": "cardType",
 									"key": "cardType",
-									"value": "CREDIT"
+									"value": "CREDIT",
+									"description": "cardType"
 								},
 								{
-									"description": "email",
 									"key": "email",
-									"value": "string"
+									"value": "string",
+									"description": "email"
 								},
 								{
-									"description": "name",
 									"key": "name",
-									"value": "string"
+									"value": "string",
+									"description": "name"
 								},
 								{
-									"description": "shopperId",
 									"key": "shopperId",
-									"value": "4537"
+									"value": "4537",
+									"description": "shopperId"
 								}
 							]
 						},
@@ -4294,6 +4318,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -4563,6 +4593,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -4580,14 +4616,14 @@
 							],
 							"query": [
 								{
-									"description": "amount",
 									"key": "amount",
-									"value": "8166.259592406317"
+									"value": "8166.259592406317",
+									"description": "amount"
 								},
 								{
-									"description": "cardNumber",
 									"key": "cardNumber",
-									"value": "string"
+									"value": "string",
+									"description": "cardNumber"
 								}
 							]
 						},
