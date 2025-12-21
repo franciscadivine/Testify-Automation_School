@@ -1550,286 +1550,6 @@
 					"id": "c02569c3-28dc-4513-ad7f-e2c4dc09828f"
 				},
 				{
-					"name": "Get all bank account of shopper",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d244f52f-1bbb-4bfd-9ed1-269690f14f9f",
-								"exec": [
-									"let xml = pm.response.text();",
-									"let jsonData = xml2Json(xml);",
-									"",
-									"// Define bankData from the correct path in the parsed XML",
-									"let bankData = jsonData.ResponseStructure.data;",
-									"",
-									"// Test to verify response message",
-									"pm.test(\"Response message is correct\", function () {",
-									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");",
-									"});",
-									"",
-									"// Test to verify account number is not undefined",
-									"pm.test(\"Bank account number is not undefined\", function () {",
-									"    pm.expect(bankData.bankAccountNumber).to.not.be.undefined;",
-									"});",
-									"",
-									"// Test to verify account number is not null",
-									"pm.test(\"Bank account number is not null\", function () {",
-									"    pm.expect(bankData.bankAccountNumber).to.not.eql(0);",
-									"});",
-									"",
-									"// Test for account balance is not undefined",
-									"pm.test(\"Bank account balance is not undefined\", function () {",
-									"    pm.expect(bankData.balance).to.not.be.undefined;",
-									"});",
-									"",
-									"// To verify bankAccountId is not empty",
-									"pm.test(\"Bank account ID is not empty\", function () {",
-									"    pm.expect(bankData.bankAccountId).to.not.eql(\"\");",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "43412602-dfd6-4946-8cf5-b407314a593a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{jwtToken}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/bankaccounts?shopperId={{userId}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"bankaccounts"
-							],
-							"query": [
-								{
-									"key": "shopperId",
-									"value": "{{userId}}",
-									"description": "shopperId"
-								}
-							]
-						},
-						"description": "Get all bank account of shopper"
-					},
-					"response": [
-						{
-							"id": "c78b8519-091e-4df1-8852-81bd9f7d44c4",
-							"name": "Users data is returned",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/xml"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"data\": [\n    {\n      \"balance\": 5783.930959345403,\n      \"bankAccountId\": 8037,\n      \"bankAccountNumber\": \"string\",\n      \"bankName\": \"string\",\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"shopperId\": 9038\n    },\n    {\n      \"balance\": 6182.905962681771,\n      \"bankAccountId\": 7563,\n      \"bankAccountNumber\": \"string\",\n      \"bankName\": \"string\",\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"shopperId\": 9086\n    }\n  ],\n  \"message\": \"string\",\n  \"statusCode\": 6398\n}"
-						},
-						{
-							"id": "2981c4bd-41ce-4d66-81ce-65f6853f3b45",
-							"name": "Bad request",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "6ce1f633-734d-49bf-8579-fa438b8e4bca",
-							"name": "Not Authorised",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "30d4ff5e-0593-4e39-9988-59d0af940b3c",
-							"name": "Access Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "5d9f60c2-87ec-40dd-bbad-7681d927a0f5",
-							"name": "Given Card not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "a89ef81f-afa2-497e-827a-d40ea41214ac",
-							"name": "Method not supported",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"bankaccounts"
-									],
-									"query": [
-										{
-											"description": "shopperId",
-											"key": "shopperId",
-											"value": "4537"
-										}
-									]
-								}
-							},
-							"status": "Method Not Allowed",
-							"code": 405,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						}
-					]
-				},
-				{
 					"name": "Create bank account",
 					"event": [
 						{
@@ -2145,6 +1865,286 @@
 											"key": "email",
 											"value": "string"
 										},
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get all bank account of shopper",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d244f52f-1bbb-4bfd-9ed1-269690f14f9f",
+								"exec": [
+									"let xml = pm.response.text();",
+									"let jsonData = xml2Json(xml);",
+									"",
+									"// Define bankData from the correct path in the parsed XML",
+									"let bankData = jsonData.ResponseStructure.data;",
+									"",
+									"// Test to verify response message",
+									"pm.test(\"Response message is correct\", function () {",
+									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");",
+									"});",
+									"",
+									"// Test to verify account number is not undefined",
+									"pm.test(\"Bank account number is not undefined\", function () {",
+									"    pm.expect(bankData.bankAccountNumber).to.not.be.undefined;",
+									"});",
+									"",
+									"// Test to verify account number is not null",
+									"pm.test(\"Bank account number is not null\", function () {",
+									"    pm.expect(bankData.bankAccountNumber).to.not.eql(0);",
+									"});",
+									"",
+									"// Test for account balance is not undefined",
+									"pm.test(\"Bank account balance is not undefined\", function () {",
+									"    pm.expect(bankData.balance).to.not.be.undefined;",
+									"});",
+									"",
+									"// To verify bankAccountId is not empty",
+									"pm.test(\"Bank account ID is not empty\", function () {",
+									"    pm.expect(bankData.bankAccountId).to.not.eql(\"\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "43412602-dfd6-4946-8cf5-b407314a593a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/bankaccounts?shopperId={{userId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bankaccounts"
+							],
+							"query": [
+								{
+									"key": "shopperId",
+									"value": "{{userId}}",
+									"description": "shopperId"
+								}
+							]
+						},
+						"description": "Get all bank account of shopper"
+					},
+					"response": [
+						{
+							"id": "c78b8519-091e-4df1-8852-81bd9f7d44c4",
+							"name": "Users data is returned",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/xml"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"data\": [\n    {\n      \"balance\": 5783.930959345403,\n      \"bankAccountId\": 8037,\n      \"bankAccountNumber\": \"string\",\n      \"bankName\": \"string\",\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"shopperId\": 9038\n    },\n    {\n      \"balance\": 6182.905962681771,\n      \"bankAccountId\": 7563,\n      \"bankAccountNumber\": \"string\",\n      \"bankName\": \"string\",\n      \"email\": \"string\",\n      \"password\": \"string\",\n      \"shopperId\": 9086\n    }\n  ],\n  \"message\": \"string\",\n  \"statusCode\": 6398\n}"
+						},
+						{
+							"id": "2981c4bd-41ce-4d66-81ce-65f6853f3b45",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "6ce1f633-734d-49bf-8579-fa438b8e4bca",
+							"name": "Not Authorised",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "30d4ff5e-0593-4e39-9988-59d0af940b3c",
+							"name": "Access Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "5d9f60c2-87ec-40dd-bbad-7681d927a0f5",
+							"name": "Given Card not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
+										{
+											"description": "shopperId",
+											"key": "shopperId",
+											"value": "4537"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "a89ef81f-afa2-497e-827a-d40ea41214ac",
+							"name": "Method not supported",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/bankaccounts?shopperId=4537",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bankaccounts"
+									],
+									"query": [
 										{
 											"description": "shopperId",
 											"key": "shopperId",
@@ -5403,6 +5403,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
