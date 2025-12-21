@@ -13,6 +13,562 @@
 					"name": "{adminId}",
 					"item": [
 						{
+							"name": "Register as Admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "311279dc-6de0-45b9-9a6f-e49733979a5c",
+										"exec": [
+											"let xml = pm.response.text();",
+											"let jsonData = xml2Json(xml);",
+											"",
+											"//test to verify response contains \"role\"",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"role\");",
+											"});",
+											"",
+											"//Test to verify zoneId is not undefined",
+											"pm.test(\"zoneId is not undefined\", function () {",
+											"    pm.expect(jsonData.ResponseStructure.data.zoneId).to.not.be.undefined;",
+											"});",
+											"",
+											"// to verify creation message",
+											"pm.test(\"Creation message is correct\", function () {",
+											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Created\");",
+											"});",
+											"//Test to verify date of creation is not empty",
+											"pm.test(\"Creation date is not empty\", function () {",
+											"    pm.expect(jsonData.ResponseStructure.data.createdDateTime).to.not.be.empty;",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "5d3700b5-34fd-4992-bbbf-8b0da3ec71c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "verifyUrl",
+										"value": "string",
+										"description": "verifyUrl"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/xml"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"city\": \"Edo\",\n  \"country\": \"Nigeria\",\n  \"email\": \"{{$randomEmail}}\",\n  \"firstName\": \"hectorboy1\",\n  \"gender\": \"male\",\n  \"lastName\": \"rectorboy\",\n  \"password\": \"1234\",\n  \"phone\":8945995000,\n  \"state\": \"wien\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"ADMIN\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"ALPHA\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin",
+								"description": "Save the Admin data and return the Admin data with ID"
+							},
+							"response": [
+								{
+									"id": "8dedf763-1de2-42d1-a83e-56856956dd4a",
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/xml"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
+								},
+								{
+									"id": "dc5bdae5-fbbc-48a4-9bde-7de2316273b5",
+									"name": "Bad requests",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "9dde3133-e147-450e-9c77-47dd1b0f5166",
+									"name": "Not Authorised",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "64375def-3f6f-4948-9d02-6f3b47d54bf9",
+									"name": "Access Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "5854f4e9-281a-4ec6-a43b-393a9f7c2238",
+									"name": "Given ID not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "2e279505-38bb-46fe-a7da-62bf51d3870a",
+									"name": "Method not supported",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "7b9fd38b-efaa-4cd2-a9f0-161b20e6edda",
+									"name": "Conflict",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "verifyUrl",
+												"key": "verifyUrl",
+												"value": "string"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/admin"
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Shopper Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f58c3c1b-102c-4b89-b1bb-82e371a4fae0",
+										"exec": [
+											"let xml = pm.response.text();\r",
+											"let jsonData = xml2Json(xml);\r",
+											"//To verify status is active\r",
+											"pm.test(\"Status is active\", function () {\r",
+											"    console.log(jsonData.ResponseStructure.data.status)\r",
+											"   pm.expect(jsonData.ResponseStructure.data.status).to.eql(\"ACTIVE\");\r",
+											"})\r",
+											"//To verify role \r",
+											"pm.test(\"Role is a valid user role\", function () {\r",
+											"    const role = jsonData.ResponseStructure.data.role.toUpperCase();\r",
+											"    const allowedRoles = [\"ADMIN\", \"MERCHANT\", \"SHOPPER\"];\r",
+											"\r",
+											"    pm.expect(allowedRoles).to.include(role);\r",
+											"});\r",
+											"\r",
+											"//To verify incorrect email or password returns error message\r",
+											"pm.test(\"Incorrect email or password returns error message\", function () {\r",
+											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"BAD_REQUEST\");\r",
+											"})\r",
+											"//To verify jwtToken is not undefined\r",
+											"pm.test(\"jwtToken is not undefined\", function () {\r",
+											"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.undefined;\r",
+											"})\r",
+											"console.log(jsonData.ResponseStructure.data.jwtToken)\r",
+											"\r",
+											"//To verify jwtToken is not null\r",
+											"pm.test(\"jwtToken is not null\", function () {\r",
+											"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.null;\r",
+											"})\r",
+											"\r",
+											"pm.environment.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
+											"pm.collectionVariables.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "7775bf99-8b2a-4553-9b81-3c79afe30202",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/xml"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"hector@gmail.com\",\n  \"password\": \"1234\",\n  \"role\": \"ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login",
+								"description": "Returns User based on Email and Password "
+							},
+							"response": [
+								{
+									"id": "f6049ad8-50da-4a3d-99d1-38be00f384b5",
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/xml"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/users/login"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
+								},
+								{
+									"id": "bdef4b32-a89b-401e-96e1-b332f37db146",
+									"name": "Not Authorised",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/users/login"
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "a582f090-0733-43ac-86d0-09148abe7396",
+									"name": "Access Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/users/login"
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								},
+								{
+									"id": "45c2c47b-1981-4177-b6e0-8a17b49a0cdb",
+									"name": "Method not supported",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/users/login"
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"responseTime": null,
+									"body": null
+								}
+							]
+						},
+						{
 							"name": "Get Admin Details by Id",
 							"event": [
 								{
@@ -54,6 +610,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -291,6 +853,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -627,562 +1195,6 @@
 						}
 					],
 					"id": "759fd6d1-2de0-44d5-b88a-15ff3dd382f9"
-				},
-				{
-					"name": "Register as Admin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "311279dc-6de0-45b9-9a6f-e49733979a5c",
-								"exec": [
-									"let xml = pm.response.text();",
-									"let jsonData = xml2Json(xml);",
-									"",
-									"//test to verify response contains \"role\"",
-									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"role\");",
-									"});",
-									"",
-									"//Test to verify zoneId is not undefined",
-									"pm.test(\"zoneId is not undefined\", function () {",
-									"    pm.expect(jsonData.ResponseStructure.data.zoneId).to.not.be.undefined;",
-									"});",
-									"",
-									"// to verify creation message",
-									"pm.test(\"Creation message is correct\", function () {",
-									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Created\");",
-									"});",
-									"//Test to verify date of creation is not empty",
-									"pm.test(\"Creation date is not empty\", function () {",
-									"    pm.expect(jsonData.ResponseStructure.data.createdDateTime).to.not.be.empty;",
-									"})"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "5d3700b5-34fd-4992-bbbf-8b0da3ec71c3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "verifyUrl",
-								"value": "string",
-								"description": "verifyUrl"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"city\": \"Edo\",\n  \"country\": \"Nigeria\",\n  \"email\": \"{{$randomEmail}}\",\n  \"firstName\": \"hectorboy1\",\n  \"gender\": \"male\",\n  \"lastName\": \"rectorboy\",\n  \"password\": \"1234\",\n  \"phone\":8945995000,\n  \"state\": \"wien\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"ADMIN\",\n  \"status\": \"ACTIVE\",\n  \"token\": \"jwtToken\",\n  \"zoneId\": \"ALPHA\"\n}",
-							"options": {
-								"raw": {
-									"headerFamily": "json",
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/admin",
-						"description": "Save the Admin data and return the Admin data with ID"
-					},
-					"response": [
-						{
-							"id": "8dedf763-1de2-42d1-a83e-56856956dd4a",
-							"name": "Created",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/xml"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
-						},
-						{
-							"id": "dc5bdae5-fbbc-48a4-9bde-7de2316273b5",
-							"name": "Bad requests",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "9dde3133-e147-450e-9c77-47dd1b0f5166",
-							"name": "Not Authorised",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "64375def-3f6f-4948-9d02-6f3b47d54bf9",
-							"name": "Access Forbidden",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "5854f4e9-281a-4ec6-a43b-393a9f7c2238",
-							"name": "Given ID not found",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "2e279505-38bb-46fe-a7da-62bf51d3870a",
-							"name": "Method not supported",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Method Not Allowed",
-							"code": 405,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "7b9fd38b-efaa-4cd2-a9f0-161b20e6edda",
-							"name": "Conflict",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "verifyUrl",
-										"key": "verifyUrl",
-										"value": "string"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"state\": \"string\",\n  \"createdDateTime\": \"1961-03-17T02:56:30.544Z\",\n  \"dob\": \"1959-08-30\",\n  \"imageId\": \"string\",\n  \"jwtToken\": \"string\",\n  \"role\": \"MERCHANT\",\n  \"status\": \"BLOCKED\",\n  \"token\": \"string\",\n  \"zoneId\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/admin"
-							},
-							"status": "Conflict",
-							"code": 409,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						}
-					]
-				},
-				{
-					"name": "Shopper Login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f58c3c1b-102c-4b89-b1bb-82e371a4fae0",
-								"exec": [
-									"let xml = pm.response.text();\r",
-									"let jsonData = xml2Json(xml);\r",
-									"//To verify status is active\r",
-									"pm.test(\"Status is active\", function () {\r",
-									"    console.log(jsonData.ResponseStructure.data.status)\r",
-									"   pm.expect(jsonData.ResponseStructure.data.status).to.eql(\"ACTIVE\");\r",
-									"})\r",
-									"//To verify role \r",
-									"pm.test(\"Role is a valid user role\", function () {\r",
-									"    const role = jsonData.ResponseStructure.data.role.toUpperCase();\r",
-									"    const allowedRoles = [\"ADMIN\", \"MERCHANT\", \"SHOPPER\"];\r",
-									"\r",
-									"    pm.expect(allowedRoles).to.include(role);\r",
-									"});\r",
-									"\r",
-									"//To verify incorrect email or password returns error message\r",
-									"pm.test(\"Incorrect email or password returns error message\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"BAD_REQUEST\");\r",
-									"})\r",
-									"//To verify jwtToken is not undefined\r",
-									"pm.test(\"jwtToken is not undefined\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.undefined;\r",
-									"})\r",
-									"console.log(jsonData.ResponseStructure.data.jwtToken)\r",
-									"\r",
-									"//To verify jwtToken is not null\r",
-									"pm.test(\"jwtToken is not null\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.null;\r",
-									"})\r",
-									"\r",
-									"pm.environment.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
-									"pm.collectionVariables.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
-									"\r",
-									"\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "7775bf99-8b2a-4553-9b81-3c79afe30202",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"hector@gmail.com\",\n  \"password\": \"1234\",\n  \"role\": \"ADMIN\"\n}",
-							"options": {
-								"raw": {
-									"headerFamily": "json",
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/users/login",
-						"description": "Returns User based on Email and Password "
-					},
-					"response": [
-						{
-							"id": "f6049ad8-50da-4a3d-99d1-38be00f384b5",
-							"name": "OK",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/xml"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
-						},
-						{
-							"id": "bdef4b32-a89b-401e-96e1-b332f37db146",
-							"name": "Not Authorised",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "a582f090-0733-43ac-86d0-09148abe7396",
-							"name": "Access Forbidden",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "45c2c47b-1981-4177-b6e0-8a17b49a0cdb",
-							"name": "Method not supported",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Method Not Allowed",
-							"code": 405,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						}
-					]
 				}
 			],
 			"id": "77eb916a-ee54-4001-8abf-68fd1faf88c0"
