@@ -350,7 +350,7 @@
 							]
 						},
 						{
-							"name": "Shopper Login",
+							"name": "User Login",
 							"event": [
 								{
 									"listen": "test",
