@@ -7678,6 +7678,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -7873,6 +7879,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -8262,6 +8274,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{jwtToken}}"
+							}
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -8739,6 +8757,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -8967,6 +8991,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -8999,14 +9029,13 @@
 									],
 									"query": [
 										{
-											"description": "productId",
 											"key": "productId",
-											"value": "5604"
+											"value": "5604",
+											"description": "productId"
 										}
 									],
 									"variable": [
 										{
-											"id": "8585eed3-a515-442c-8c50-0e394a22f6ec",
 											"key": "reviewId",
 											"value": "5604",
 											"description": "reviewId"
@@ -9358,6 +9387,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -9376,14 +9411,13 @@
 									],
 									"query": [
 										{
-											"description": "productId",
 											"key": "productId",
-											"value": "5604"
+											"value": "5604",
+											"description": "productId"
 										}
 									],
 									"variable": [
 										{
-											"id": "c1a0e9d3-856e-4146-adaf-8676659982ad",
 											"key": "reviewId",
 											"value": "5604",
 											"description": "reviewId"
