@@ -13037,6 +13037,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{jwtToken}}"
+													}
+												},
 												"method": "PUT",
 												"header": [
 													{
@@ -13071,13 +13077,11 @@
 													],
 													"variable": [
 														{
-															"id": "2e8ea87d-9603-45f2-b06d-09a72082faa4",
 															"key": "shopperId",
 															"value": "5604",
 															"description": "shopperId"
 														},
 														{
-															"id": "18978bdd-3bf1-48fa-846c-effc7eb04212",
 															"key": "itemId",
 															"value": "5604",
 															"description": "itemId"
@@ -15915,6 +15919,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{jwtToken}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
@@ -15934,7 +15944,6 @@
 											],
 											"variable": [
 												{
-													"id": "cda20979-4890-4e7b-a472-a6c6de7fa0a0",
 													"key": "shopperId",
 													"value": "5604",
 													"description": "shopperId"
@@ -16161,6 +16170,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{jwtToken}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -16194,7 +16209,6 @@
 											],
 											"variable": [
 												{
-													"id": "d82b355b-10c5-4d80-b4b6-127e0e7f4178",
 													"key": "shopperId",
 													"value": "5604",
 													"description": "shopperId"
@@ -16547,6 +16561,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -16810,6 +16830,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{jwtToken}}"
+									}
+								},
 								"method": "PATCH",
 								"header": [
 									{
