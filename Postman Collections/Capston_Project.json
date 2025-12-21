@@ -7403,6 +7403,30 @@
 						},
 						{
 							"name": "deletes the product based on id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ab63b45-5208-4887-b4a7-37201c7a5a4e",
+										"exec": [
+											"let xml = pm.response.text();\r",
+											"let jsonData = xml2Json(xml);\r",
+											"//Test to verify response message\r",
+											"pm.test(\"Response message is Success\", function () {\r",
+											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");\r",
+											"})\r",
+											"console.log(jsonData);\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"DELETED\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"id": "ef71cc96-b09d-4f9c-82b4-c7b5249fcc9b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
