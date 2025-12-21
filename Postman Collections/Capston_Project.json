@@ -629,225 +629,6 @@
 					"id": "759fd6d1-2de0-44d5-b88a-15ff3dd382f9"
 				},
 				{
-					"name": "Shopper Login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f58c3c1b-102c-4b89-b1bb-82e371a4fae0",
-								"exec": [
-									"let xml = pm.response.text();\r",
-									"let jsonData = xml2Json(xml);\r",
-									"//To verify status is active\r",
-									"pm.test(\"Status is active\", function () {\r",
-									"    console.log(jsonData.ResponseStructure.data.status)\r",
-									"   pm.expect(jsonData.ResponseStructure.data.status).to.eql(\"ACTIVE\");\r",
-									"})\r",
-									"//To verify role \r",
-									"pm.test(\"Role is a valid user role\", function () {\r",
-									"    const role = jsonData.ResponseStructure.data.role.toUpperCase();\r",
-									"    const allowedRoles = [\"ADMIN\", \"MERCHANT\", \"SHOPPER\"];\r",
-									"\r",
-									"    pm.expect(allowedRoles).to.include(role);\r",
-									"});\r",
-									"\r",
-									"//To verify incorrect email or password returns error message\r",
-									"pm.test(\"Incorrect email or password returns error message\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"BAD_REQUEST\");\r",
-									"})\r",
-									"//To verify jwtToken is not undefined\r",
-									"pm.test(\"jwtToken is not undefined\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.undefined;\r",
-									"})\r",
-									"console.log(jsonData.ResponseStructure.data.jwtToken)\r",
-									"\r",
-									"//To verify jwtToken is not null\r",
-									"pm.test(\"jwtToken is not null\", function () {\r",
-									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.null;\r",
-									"})\r",
-									"\r",
-									"pm.environment.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
-									"pm.collectionVariables.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
-									"\r",
-									"\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "7775bf99-8b2a-4553-9b81-3c79afe30202",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"hector@gmail.com\",\n  \"password\": \"1234\",\n  \"role\": \"ADMIN\"\n}",
-							"options": {
-								"raw": {
-									"headerFamily": "json",
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/users/login",
-						"description": "Returns User based on Email and Password "
-					},
-					"response": [
-						{
-							"id": "f6049ad8-50da-4a3d-99d1-38be00f384b5",
-							"name": "OK",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/xml"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
-						},
-						{
-							"id": "bdef4b32-a89b-401e-96e1-b332f37db146",
-							"name": "Not Authorised",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "a582f090-0733-43ac-86d0-09148abe7396",
-							"name": "Access Forbidden",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "45c2c47b-1981-4177-b6e0-8a17b49a0cdb",
-							"name": "Method not supported",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/users/login"
-							},
-							"status": "Method Not Allowed",
-							"code": 405,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						}
-					]
-				},
-				{
 					"name": "Register as Admin",
 					"event": [
 						{
@@ -1176,6 +957,225 @@
 							},
 							"status": "Conflict",
 							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Shopper Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f58c3c1b-102c-4b89-b1bb-82e371a4fae0",
+								"exec": [
+									"let xml = pm.response.text();\r",
+									"let jsonData = xml2Json(xml);\r",
+									"//To verify status is active\r",
+									"pm.test(\"Status is active\", function () {\r",
+									"    console.log(jsonData.ResponseStructure.data.status)\r",
+									"   pm.expect(jsonData.ResponseStructure.data.status).to.eql(\"ACTIVE\");\r",
+									"})\r",
+									"//To verify role \r",
+									"pm.test(\"Role is a valid user role\", function () {\r",
+									"    const role = jsonData.ResponseStructure.data.role.toUpperCase();\r",
+									"    const allowedRoles = [\"ADMIN\", \"MERCHANT\", \"SHOPPER\"];\r",
+									"\r",
+									"    pm.expect(allowedRoles).to.include(role);\r",
+									"});\r",
+									"\r",
+									"//To verify incorrect email or password returns error message\r",
+									"pm.test(\"Incorrect email or password returns error message\", function () {\r",
+									"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"BAD_REQUEST\");\r",
+									"})\r",
+									"//To verify jwtToken is not undefined\r",
+									"pm.test(\"jwtToken is not undefined\", function () {\r",
+									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.undefined;\r",
+									"})\r",
+									"console.log(jsonData.ResponseStructure.data.jwtToken)\r",
+									"\r",
+									"//To verify jwtToken is not null\r",
+									"pm.test(\"jwtToken is not null\", function () {\r",
+									"    pm.expect(jsonData.ResponseStructure.data.jwtToken).to.not.be.null;\r",
+									"})\r",
+									"\r",
+									"pm.environment.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
+									"pm.collectionVariables.set(\"jwtToken\", jsonData.ResponseStructure.data.jwtToken);\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "7775bf99-8b2a-4553-9b81-3c79afe30202",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"hector@gmail.com\",\n  \"password\": \"1234\",\n  \"role\": \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users/login",
+						"description": "Returns User based on Email and Password "
+					},
+					"response": [
+						{
+							"id": "f6049ad8-50da-4a3d-99d1-38be00f384b5",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/xml"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"data\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"createdDateTime\": \"2002-07-19T09:21:40.272Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"imageId\": \"string\",\n    \"jwtToken\": \"string\",\n    \"lastName\": \"string\",\n    \"role\": \"MERCHANT\",\n    \"state\": \"string\",\n    \"status\": \"APPROVED\",\n    \"userId\": 4711,\n    \"zoneId\": \"string\"\n  },\n  \"message\": \"string\",\n  \"statusCode\": 9831\n}"
+						},
+						{
+							"id": "bdef4b32-a89b-401e-96e1-b332f37db146",
+							"name": "Not Authorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "a582f090-0733-43ac-86d0-09148abe7396",
+							"name": "Access Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "45c2c47b-1981-4177-b6e0-8a17b49a0cdb",
+							"name": "Method not supported",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"role\": \"SUPER_ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login"
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
 							"_postman_previewlanguage": "text",
 							"header": [],
 							"cookie": [],
