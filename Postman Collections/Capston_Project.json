@@ -7171,29 +7171,35 @@
 									"script": {
 										"id": "0b6fbd04-a913-4669-900d-4388d1723c5c",
 										"exec": [
-											"let xml = pm.response.text();\r",
-											"let jsonData = xml2Json(xml);\r",
-											"//Test to verify response message\r",
-											"pm.test(\"Response message is Success\", function () {\r",
-											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");\r",
-											"})\r",
-											"console.log(jsonData);\r",
-											"//Test to verify email is not empty\r",
-											"pm.test(\"title is not empty\", function () {\r",
-											"\r",
-											"    pm.expect(jsonData.ResponseStructure.data[0].title).to.not.empty;\r",
-											"})\r",
-											"//Test to verify productId is not undefined\r",
-											"pm.test(\"productId is not undefined\", function () {\r",
-											"    pm.expect(jsonData.ResponseStructure.data[0].productId).to.not.be.undefined;\r",
-											"})\r",
-											"// Ensure data array exists\r",
-											"let products = jsonData.ResponseStructure.data;\r",
-											"pm.test(\"Products array is not empty\", function () {\r",
-											"    pm.expect(products.length).to.be.greaterThan(0);\r",
-											"});\r",
-											"pm.collectionVariables.set(\"ProductId\",jsonData.ResponseStructure.data[0].productId)\r",
-											""
+											"let xml = pm.response.text();",
+											"let jsonData = xml2Json(xml);",
+											"",
+											"//Test to verify response message",
+											"pm.test(\"Response message is Success\", function () {",
+											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");",
+											"});",
+											"",
+											"console.log(jsonData);",
+											"",
+											"// Access data as a single object, not an array",
+											"let product = jsonData.ResponseStructure.data;",
+											"",
+											"//Test to verify title is not empty",
+											"pm.test(\"title is not empty\", function () {",
+											"    pm.expect(product.title).to.not.be.empty;",
+											"});",
+											"",
+											"//Test to verify productId is not undefined",
+											"pm.test(\"productId is not undefined\", function () {",
+											"    pm.expect(product.productId).to.not.be.undefined;",
+											"});",
+											"",
+											"// Ensure product object exists",
+											"pm.test(\"Products array is not empty\", function () {",
+											"    pm.expect(product).to.exist;",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"ProductId\", product.productId);"
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -7415,23 +7421,7 @@
 										"value": "application/xml"
 									}
 								],
-								"url": {
-									"raw": "{{baseUrl}}/products/:productId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"products",
-										":productId"
-									],
-									"variable": [
-										{
-											"key": "productId",
-											"value": "5604",
-											"description": "productId"
-										}
-									]
-								},
+								"url": "{{baseUrl}}/products/{{ProductId}}",
 								"description": "delete the product from the database with the give id"
 							},
 							"response": [
