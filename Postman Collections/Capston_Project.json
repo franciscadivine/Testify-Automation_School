@@ -8348,7 +8348,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/products?productId=27&MerchantId=330399",
+							"raw": "{{baseUrl}}/products?productId=29&MerchantId=330399",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -8358,7 +8358,7 @@
 							"query": [
 								{
 									"key": "productId",
-									"value": "27",
+									"value": "29",
 									"description": "productId"
 								},
 								{
@@ -9032,6 +9032,35 @@
 					"item": [
 						{
 							"name": "Update an added review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "91eac692-629b-49b7-b21c-3877d4e1ad42",
+										"exec": [
+											"let xml = pm.response.text();\r",
+											"let jsonData = xml2Json(xml);\r",
+											"//Test to verify response message\r",
+											"pm.test(\"Response message is Success\", function () {\r",
+											"    pm.expect(jsonData.ResponseStructure.message).to.eql(\"Success\");\r",
+											"})\r",
+											"console.log(jsonData)\r",
+											"//Test to verify Shoppername not empty\r",
+											"pm.test(\"shoppername not empty\",function(){\r",
+											"    pm.expect(jsonData.ResponseStructure.data.shopperName).to.not.eql(\"\")\r",
+											"\r",
+											"})\r",
+											"pm.test(\"rating not empty\",function(){\r",
+											"    pm.expect(jsonData.ResponseStructure.data.shopperName).to.not.eql(0)\r",
+											"\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"id": "2b1f829a-dec3-420a-ab6e-7b9e8f21ccd6",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9056,7 +9085,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"dateTime\": \"1968-10-31T05:07:37.008Z\",\n  \"description\": \"string\",\n  \"heading\": \"string\",\n  \"rating\": 4644.8216421967345,\n  \"shopperId\": 5894,\n  \"shopperName\": \"string\"\n}",
+									"raw": "{\n  \"dateTime\": \"1968-10-31T05:07:37.008Z\",\n  \"description\": \"string\",\n  \"heading\": \"string\",\n  \"rating\": 4644.8216421967345,\n  \"shopperId\": 3120,\n  \"shopperName\": \"string\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -9065,7 +9094,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/reviews/:reviewId?productId=5604",
+									"raw": "{{baseUrl}}/reviews/:reviewId?productId={{ProductId}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -9076,14 +9105,14 @@
 									"query": [
 										{
 											"key": "productId",
-											"value": "5604",
+											"value": "{{ProductId}}",
 											"description": "productId"
 										}
 									],
 									"variable": [
 										{
 											"key": "reviewId",
-											"value": "5604",
+											"value": "{{shopperId}}",
 											"description": "reviewId"
 										}
 									]
