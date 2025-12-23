@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>404</statusCode><message>NOT_FOUND</message><data>No item added in the Cart for user id 5604</data></ResponseStructure>

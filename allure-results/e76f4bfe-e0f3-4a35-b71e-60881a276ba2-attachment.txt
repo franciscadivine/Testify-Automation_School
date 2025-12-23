@@ -1,0 +1,13 @@
+{
+  "addressId": 1085,
+  "buildingInfo": "67 marina",
+  "city": "lagos",
+  "country": "Nigeria",
+  "landmark": "obalende",
+  "name": "Yola",
+  "phone": "8067452312",
+  "pincode": "124",
+  "state": "lagos",
+  "streetInfo": "right street",
+  "type": "string"
+}

@@ -1,0 +1,13 @@
+{
+  "addressId": 1085,
+  "buildingInfo": "string",
+  "city": "string",
+  "country": "string",
+  "landmark": "string",
+  "name": "string",
+  "phone": "string",
+  "pincode": "string",
+  "state": "string",
+  "streetInfo": "string",
+  "type": "string"
+}

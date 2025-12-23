@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>200</statusCode><message>Success</message><data><bankAccountId>10425</bankAccountId><bankAccountNumber>741852969759</bankAccountNumber><bankName>IDHC</bankName><shopperId>330355</shopperId><email>hey7@gmail.com</email><password>iXFdWHZ</password><balance>200000.0</balance></data></ResponseStructure>

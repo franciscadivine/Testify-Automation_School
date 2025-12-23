@@ -1,0 +1,10 @@
+{
+    "Accept": "application/xml",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWN0b3JAZ21haWwuY29tIEFETUlOIiwiZXhwIjoxNzY2MTkxNTA3LCJpYXQiOjE3NjYxNTU1MDd9.48_yd5pMFDhTLNxnO0i4vHT-S0wpnIOfSWegAMd6RHM",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "35e74c3f-8ea5-479e-8668-c86bf3daade3",
+    "Host": "www.shoppersstack.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}

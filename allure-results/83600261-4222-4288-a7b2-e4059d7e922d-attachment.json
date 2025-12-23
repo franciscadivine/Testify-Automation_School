@@ -1,0 +1,10 @@
+{
+    "Accept": "application/pdf",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWN0b3JAZ21haWwuY29tIEFETUlOIiwiZXhwIjoxNzY2MTkxNTA3LCJpYXQiOjE3NjYxNTU1MDd9.48_yd5pMFDhTLNxnO0i4vHT-S0wpnIOfSWegAMd6RHM",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "3237e763-6e07-4d1b-a127-0bfa4b5d078c",
+    "Host": "www.shoppersstack.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}

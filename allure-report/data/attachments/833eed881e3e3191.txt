@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>404</statusCode><message>NOT_FOUND</message><data>Product 5604 does not exist</data></ResponseStructure>

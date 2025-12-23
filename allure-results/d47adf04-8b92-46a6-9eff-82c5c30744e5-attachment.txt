@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>200</statusCode><message>Success</message><data><reviewId>24720</reviewId><shopperId>230739</shopperId><shopperName>neha</shopperName><heading>good</heading><description>beautiful</description><rating>3.5</rating><dateTime>2025-12-19T21:35:48.618106</dateTime></data></ResponseStructure>
