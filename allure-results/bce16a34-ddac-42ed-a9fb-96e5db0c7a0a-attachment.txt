@@ -1,5 +1,0 @@
-{
-  "email": "string",
-  "password": "string",
-  "role": "SUPER_ADMIN"
-}

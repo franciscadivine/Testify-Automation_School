@@ -1,1 +1,0 @@
-<ResponseStructure><statusCode>404</statusCode><message>NOT_FOUND</message><data>Shopper id 5894, does not exist</data></ResponseStructure>
