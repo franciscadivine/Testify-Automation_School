@@ -1,1 +1,0 @@
-<ResponseStructure><statusCode>200</statusCode><message>Success</message><data><userId>330399</userId><email>hey117@gmail.com</email><role>SHOPPER</role><status>ACTIVE</status><createdDateTime/><firstName>Hend</firstName><lastName>Yole</lastName><city>Beneu</city><state>Edo</state><country>Nigeria</country><zoneId>ALPHA</zoneId><imageId/><jwtToken/></data></ResponseStructure>

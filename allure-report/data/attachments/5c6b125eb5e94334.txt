@@ -1,2 +1,0 @@
-level: warn, messages: Using "xml2Json" is deprecated. Use "require('xml2js')" instead.
-level: log, messages: [object Object]

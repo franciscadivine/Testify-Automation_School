@@ -1,1 +1,0 @@
-<ResponseStructure><statusCode>409</statusCode><message>CONFLICT</message><data>Given Email ID or Phone number already used</data></ResponseStructure>
