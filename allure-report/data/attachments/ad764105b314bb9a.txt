@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>400</statusCode><message>BAD_REQUEST</message><data>Invalid Card</data></ResponseStructure>

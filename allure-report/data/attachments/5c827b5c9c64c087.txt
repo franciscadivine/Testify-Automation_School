@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>200</statusCode><message>Success</message><data>IDHC</data><data>ICD</data><data/></ResponseStructure>

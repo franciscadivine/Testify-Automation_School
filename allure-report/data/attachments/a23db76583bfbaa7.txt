@@ -1,0 +1,90 @@
+[
+  {
+    "brand": "kik",
+    "category": "clothing",
+    "merchantId": 330358,
+    "title": "clothes",
+    "type": "cotton",
+    "createdDateTime": "2006-08-24T06:08:47.670Z",
+    "description": "cotton",
+    "name": "polo",
+    "offer": 662.994882138006,
+    "price": 3296.196947651344,
+    "productId": 6088,
+    "productImageURLs": [
+      "string",
+      "string"
+    ],
+    "quantity": 2368,
+    "rating": 7817.02496353372,
+    "reviews": [
+      {
+        "dateTime": "1964-03-25T22:39:01.088Z",
+        "description": "string",
+        "heading": "string",
+        "rating": 5272.392822382559,
+        "shopperId": 7660,
+        "shopperName": "string"
+      },
+      {
+        "dateTime": "1947-08-24T23:01:14.274Z",
+        "description": "string",
+        "heading": "string",
+        "rating": 5.615556366893593,
+        "shopperId": 330355,
+        "shopperName": "love"
+      }
+    ],
+    "searchTags": [
+      "string",
+      "string"
+    ],
+    "status": "ACTIVE",
+    "thumbnailURL": "string",
+    "zoneId": "Alpha"
+  },
+  {
+    "brand": "string",
+    "category": "string",
+    "merchantId": 1603,
+    "title": "string",
+    "type": "string",
+    "createdDateTime": "1978-02-06T14:52:46.428Z",
+    "description": "string",
+    "name": "string",
+    "offer": 7260.787911994735,
+    "price": 6584.748696877503,
+    "productId": 5217,
+    "productImageURLs": [
+      "string",
+      "string"
+    ],
+    "quantity": 1371,
+    "rating": 7008.530748149493,
+    "reviews": [
+      {
+        "dateTime": "1974-01-02T08:15:43.551Z",
+        "description": "string",
+        "heading": "string",
+        "rating": 6304.661853387294,
+        "shopperId": 4921,
+        "shopperName": "string"
+      },
+      {
+        "dateTime": "1951-04-12T10:05:13.313Z",
+        "description": "string",
+        "heading": "string",
+        "rating": 9244.942979353154,
+        "shopperId": 330358,
+        "shopperName": "string"
+      }
+    ],
+    "searchTags": [
+      "string",
+      "string"
+    ],
+    "status": "APPROVED",
+    "thumbnailURL": "string",
+    "zoneId": "string"
+  }
+]

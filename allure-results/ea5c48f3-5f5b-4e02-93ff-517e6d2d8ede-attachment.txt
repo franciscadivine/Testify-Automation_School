@@ -1,0 +1,10 @@
+{
+  "key_0": [
+    "keto",
+    "shoes"
+  ],
+  "key_1": [
+    "dress",
+    "blouse"
+  ]
+}

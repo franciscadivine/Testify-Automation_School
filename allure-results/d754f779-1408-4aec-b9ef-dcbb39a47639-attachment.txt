@@ -1,0 +1,3 @@
+level: warn, messages: Using "xml2Json" is deprecated. Use "require('xml2js')" instead.
+level: log, messages: ACTIVE
+level: log, messages: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWN0b3JAZ21haWwuY29tIEFETUlOIiwiZXhwIjoxNzY2MTk2MzUyLCJpYXQiOjE3NjYxNjAzNTJ9.sjYuv07a4WKzMhmMvCz65F2YDL0_mhUtXNtcBlouWMM

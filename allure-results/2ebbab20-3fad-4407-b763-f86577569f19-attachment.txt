@@ -1,0 +1,12 @@
+{
+  "city": "Beneu",
+  "country": "Nigeria",
+  "email": "hey117@gmail.com",
+  "gender": "FEMALE",
+  "password": "Test@12345",
+  "state": "Edo",
+  "firstName": "Hend",
+  "lastName": "Yole",
+  "phone": 8160453212,
+  "zoneId": "ALPHA"
+}

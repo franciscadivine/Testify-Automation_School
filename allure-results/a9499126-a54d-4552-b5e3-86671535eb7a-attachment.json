@@ -1,0 +1,12 @@
+{
+    "verifyUrl": "string",
+    "Content-Type": "application/json",
+    "Accept": "application/xml",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "7970de7f-56d6-461c-8036-22d30eec866c",
+    "Host": "www.shoppersstack.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "429"
+}

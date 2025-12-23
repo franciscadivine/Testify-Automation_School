@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/franciscadivine/Testify-Automation_School/issues"
   },
-  "homepage": "https://github.com/franciscadivine/Testify-Automation_School#readme"
+  "homepage": "https://github.com/franciscadivine/Testify-Automation_School#readme",
+  "dependencies": {
+    "newman": "^6.2.1"
+  }
 }

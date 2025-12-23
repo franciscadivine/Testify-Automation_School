@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>401</statusCode><message>UNAUTHORIZED</message><data>User may not be merchant or In-Active</data></ResponseStructure>

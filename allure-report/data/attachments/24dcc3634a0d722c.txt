@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>201</statusCode><message>Created</message><data><id>11563</id><number>string</number><cvv>string</cvv><nameOnCard>string</nameOnCard><expiryDate>string</expiryDate><type>string</type><userId>3511</userId></data></ResponseStructure>

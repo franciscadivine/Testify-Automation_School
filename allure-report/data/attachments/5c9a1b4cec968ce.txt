@@ -1,0 +1,1 @@
+<ResponseStructure><statusCode>200</statusCode><message>Success</message></ResponseStructure>
