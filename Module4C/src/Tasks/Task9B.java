@@ -9,8 +9,8 @@ public class Task9B {
         String userInput = "";
         while (true){
             if (!userInput.equalsIgnoreCase("testify")){
-        System.out.println("Try again");
-        userInput = input.nextLine();
+                userInput = input.nextLine();
+                System.out.println("Try again");
                 }
             else if (userInput.equalsIgnoreCase("testify")){
                 System.out.println("Welcome");
