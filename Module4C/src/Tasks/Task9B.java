@@ -8,9 +8,10 @@ public class Task9B {
         Scanner input = new Scanner(System.in);
         String userInput = "";
         while (true){
+            userInput = input.nextLine();
             if (!userInput.equalsIgnoreCase("testify")){
-        System.out.println("Try again");
-        userInput = input.nextLine();
+
+                System.out.println("Try again");
                 }
             else if (userInput.equalsIgnoreCase("testify")){
                 System.out.println("Welcome");
