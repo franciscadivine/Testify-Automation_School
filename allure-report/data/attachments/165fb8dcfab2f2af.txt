@@ -1,1 +1,0 @@
-<ResponseStructure><statusCode>404</statusCode><message>NOT_FOUND</message><data><message>INVALID EMAIL</message></data></ResponseStructure>

@@ -1,4 +1,0 @@
-{
-  "productId": 2735,
-  "quantity": 8236
-}

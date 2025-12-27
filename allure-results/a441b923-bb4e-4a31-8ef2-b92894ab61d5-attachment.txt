@@ -1,9 +1,0 @@
-{
-  "cvv": "string",
-  "expiryDate": "string",
-  "id": 7466,
-  "nameOnCard": "string",
-  "number": "string",
-  "type": "string",
-  "userId": 3511
-}
