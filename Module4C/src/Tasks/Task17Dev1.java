@@ -1,6 +1,6 @@
 package Tasks;
 
-public class Task17Dev1 extends Task17ALogin implements Task17ADev1 {
+public class Task17Dev1 extends Task17ALogin {
     public static void main(String[] args) {
 
     Task17Dev1 moreinfo = new Task17Dev1();
