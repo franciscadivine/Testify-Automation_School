@@ -12,6 +12,7 @@ public class Task6 {  public static void main(String[] args) {
     driver.findElement(By.cssSelector("input#user-name")).sendKeys("standard_user");
     driver.findElement(By.cssSelector("input[placeholder='Password'][name='password']")).sendKeys("secret_sauce");
     driver.findElement(By.cssSelector("input.submit-button.btn_action")).click();
+
     driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
     driver.findElement(By.cssSelector("a.shopping_cart_link")).click();
 
