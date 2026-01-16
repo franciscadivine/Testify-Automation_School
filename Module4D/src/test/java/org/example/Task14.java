@@ -1,0 +1,20 @@
+package org.example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+public class Task14 {
+    public static void main(String[] args) throws InterruptedException {
+        System.setProperty("webdriver.chromedriver","C:\\Users\\Francisca\\Testify-Automation_School\\Module4D\\src\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+        driver.get("https://www.toolsqa.com/");
+        driver.manage().window().maximize();
+        //driver.switchTo().alert().dismiss();
+        driver.findElement(By.xpath("//span[@class='navbar__tutorial-menu--text']")).click();
+    }
+}
