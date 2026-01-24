@@ -20,7 +20,7 @@ public class seleniumAuthomation extends BaseTest{
     public Object[][] loginData() {
         return new Object[][]{
                 {"merr218@gmail.com", "Test@1234"},
-                
+
         };
     }
 
